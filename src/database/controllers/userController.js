@@ -3,7 +3,14 @@ const userService = require('../services/userService');
 
 const findAll = async (_req, res) => {
   const result = await userService.findAll();
-  res.status(200).json(result);
+  return res.status(200).json(result);
+};
+
+const findByPk = async (req, res) => {
+  const { id } = req.params;
+  const row = await userService.findByPk(id);
+  if (!row) return res.status(404).json({ message: 'User does not exist' });
+  return res.status(200).json(row);
 };
 
 const create = async (req, res) => {
@@ -15,4 +22,4 @@ const create = async (req, res) => {
   return res.status(201).json({ token });
 };
 
-module.exports = { findAll, create };
+module.exports = { findAll, findByPk, create };

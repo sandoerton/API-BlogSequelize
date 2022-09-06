@@ -1,7 +1,12 @@
 const { User } = require('../models');
 
 const findAll = async () => {
-  const result = await User.findAll();
+  const result = await User.findAll({ attributes: { exclude: ['password'] } });
+  return result;
+};
+
+const findByPk = async (id) => {
+  const result = await User.findByPk(id, { attributes: { exclude: ['password'] } });
   return result;
 };
 
@@ -16,4 +21,4 @@ const create = async ({ displayName, email, password, image }) => {
   return result.dataValues;
 };
 
-module.exports = { findAll, findUser, create };
+module.exports = { findAll, findByPk, findUser, create };
