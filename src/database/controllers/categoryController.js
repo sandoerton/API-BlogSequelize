@@ -1,9 +1,9 @@
 const categoryService = require('../services/categoryService');
 
-// const findAll = async (_req, res) => {
-//   const result = await categoryService.findAll();
-//   return res.status(200).json(result);
-// };
+const findAll = async (_req, res) => {
+  const result = await categoryService.findAll();
+  return res.status(200).json(result);
+};
 
 const create = async (req, res) => {
   const { name } = req.body;
@@ -12,4 +12,4 @@ const create = async (req, res) => {
   return res.status(201).json(category);
 };
 
-module.exports = { create };
+module.exports = { findAll, create };

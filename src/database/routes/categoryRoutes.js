@@ -4,7 +4,7 @@ const tokenValidation = require('../middlewares/auth');
 
 const categoryRoutes = express.Router();
 
-// categoryRoutes.get('/', tokenValidation, categoryController.findAll);
+categoryRoutes.get('/', tokenValidation, categoryController.findAll);
 categoryRoutes.post('/', tokenValidation, categoryController.create);
 
 module.exports = categoryRoutes;
